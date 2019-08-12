@@ -13,8 +13,9 @@ class Frame2 : AppCompatActivity() {
         setContentView(R.layout.activity_frame2)
 
         //Next_pageボタンのメソッドを実行
-        Next_page.setOnClickListener{
+        Next_page.setOnClickListener {
             onNextButtonTapped()
+            data_substitution1()
         }
     }
     //ページ遷移
@@ -22,5 +23,13 @@ class Frame2 : AppCompatActivity() {
     fun onNextButtonTapped(){
         var intent = Intent(this, Frame2_2::class.java)
         startActivity(intent)
+    }
+
+    //フォームデータ
+    fun data_substitution1(){
+        var userId = Reg_ID.text.toString()            //userid
+        var userPass = Reg_password.text.toString()   //password
+        var confirm = Reg_comfirm.text.toString()     //confirm
+
     }
 }

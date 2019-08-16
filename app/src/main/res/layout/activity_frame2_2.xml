@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content" android:id="@+id/radio_man" android:layout_weight="1"/>
         <RadioButton
                 android:text="@string/sex_female"
-                android:layout_width="70dp"
+                android:layout_width="72dp"
                 android:layout_height="20dp" android:id="@+id/radio_woman" android:layout_weight="1"/>
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.helth_application
 
 import android.os.AsyncTask
+import android.util.Log
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -28,6 +29,7 @@ class ApiPostTask(var callback: (JSONObject?) -> Unit) : AsyncTask<ApiParams, Un
             val response = call.execute()
             val responseBody = response.body()!!.string()
 
+            Log.d("TEST", responseBody)
             return JSONObject(responseBody)
         } catch (e: Exception) {
             e.printStackTrace()

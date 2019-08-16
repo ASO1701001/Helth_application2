@@ -3,6 +3,7 @@ package com.example.helth_application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_frame2.*
@@ -18,29 +19,34 @@ class Frame2 : AppCompatActivity() {
             it.setHomeButtonEnabled(true)
         } ?: IllegalAccessException("Toolbar cannot be null")
         title = resources.getString(R.string.Reg_title)
-        onNextButtonTapped()
 
+        Next_page.setOnClickListener {view ->
+             onNextButtonTapped(view)
+        }
     }
+
+
     //ページ遷移
     //パーソナルデータページへ
-    fun onNextButtonTapped(){
-        if (Reg_password.text.toString() !== Reg_comfirm.text.toString()) {
-
-        } else{
+    fun onNextButtonTapped(view: View){
+        if (Reg_password.text.toString().trim() == Reg_comfirm.text.toString().trim()) {
             val intent = Intent(this, Frame2nd::class.java)
             intent.putExtra("user_id", Reg_ID.text.toString())
             intent.putExtra("password", Reg_password.text.toString())
-            intent.putExtra("confirm",Reg_password.text.toString())
             startActivity(intent)
+        } else{
+            Snackbar.make(view, "パスワードが一致していません", Snackbar.LENGTH_SHORT).show()
         }
     }
 
     override fun onResume() {
         super.onResume()
 
-        Next_page.setOnClickListener { view ->
-            signUp(view)
+        /*
+        Next_page.setOnClickListener {
+                view ->signUp(view)
         }
+        */
     }
 
     override fun onBackPressed() {
@@ -92,7 +98,7 @@ class Frame2 : AppCompatActivity() {
 
         return when {
             confirm.isEmpty() -> {
-                Reg_comfirm.error = "メールアドレスが入力されていません"
+                Reg_comfirm.error = "パスワードが入力されていません"
                 false
             }
             else -> {
@@ -107,8 +113,10 @@ class Frame2 : AppCompatActivity() {
         if (!validationUserId()) check = false
         if (!validationConfirm()) check = false
         if (!validationPassword()) check = false
-
-        if (!check) return
+        if (!check) {
+            Log.d("TEST","ERROR")
+            return
+        }
 
         ApiPostTask {
             if (it == null) {
@@ -132,9 +140,9 @@ class Frame2 : AppCompatActivity() {
                                 "REQUIRED_PARAM" -> Snackbar.make(view, "必要な値が見つかりませんでした", Snackbar.LENGTH_SHORT).show()
                                 "VALIDATION_USER_ID" -> Reg_ID.error = "ユーザーIDの入力規則に違反しています"
                                 "VALIDATION_PASSWORD" -> Reg_password.error = "パスワードの入力規則に違反しています"
-                                "VALIDATION_CONFIRM" -> Reg_comfirm.error = "メールアドレスの入力規則に違反しています"
+                                "VALIDATION_CONFIRM" -> Reg_comfirm.error = "パスワードの入力規則に違反しています"
                                 "ALREADY_USER_ID" -> Reg_ID.error = "入力されたユーザーは既に登録されています"
-                                "DISTINCT_PASS" -> Reg_password.error = "入力されたメールアドレスは既に登録されています"
+                                "DISTINCT_PASS" -> Reg_password.error = "入力されたパスワードが異なっています"
                                 else -> Snackbar.make(view, "不明なエラーが発生しました", Snackbar.LENGTH_SHORT).show()
                             }
                         }

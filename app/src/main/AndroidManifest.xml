@@ -13,16 +13,16 @@
         </activity>
         <activity android:name=".Frame3">
         </activity>
-        <activity android:name=".Frame2_2">
+        <activity android:name=".Frame2nd">
         </activity>
-        <activity
-                android:name=".ui.login.Frame3"
-                android:label="@string/title_activity_frame3">
-        </activity>
+        <!--<activity-->
+                <!--android:name=".ui.login.Frame3"-->
+                <!--android:label="@string/title_activity_frame3">-->
+        <!--</activity>-->
         <activity android:name=".Frame2">
         </activity>
-        <activity android:name=".Frame4">
-        </activity>
+        <!--<activity android:name=".Frame4">-->
+        <!--</activity>-->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

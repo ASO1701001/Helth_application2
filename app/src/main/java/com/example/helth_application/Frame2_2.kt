@@ -24,11 +24,7 @@ class Frame2nd : AppCompatActivity() {
         password = intent.getStringExtra("password") as String
 
         //Make_accountボタンのメソッドを実行
-        /*
-        Make_acount.setOnClickListener {view ->
-            signUp(view)
-        }
-        */
+
         Make_acount.setOnClickListener { view ->
             signUp(view)
         }
@@ -45,11 +41,6 @@ class Frame2nd : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        /*
-        Make_acount.setOnClickListener { view ->
-            signUp(view)
-        }
-        */
     }
 
     override fun onBackPressed() {

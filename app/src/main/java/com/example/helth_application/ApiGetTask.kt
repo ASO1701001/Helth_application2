@@ -1,8 +1,7 @@
 package com.example.helth_application
 
 import android.os.AsyncTask
-import okhttp3.HttpUrl.Builder
-import okhttp3.HttpUrl.parse
+import okhttp3.HttpUrl.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -24,7 +23,7 @@ class ApiGetTask(var callback: (JSONObject?) -> Unit) : AsyncTask<ApiParams, Uni
             val okHttpClient = OkHttpClient.Builder().build()
             val call = okHttpClient.newCall(request)
             val response = call.execute()
-            val responseBody = response.body()!!.string()
+            val responseBody = response.body().string()
 
             return JSONObject(responseBody)
         } catch (e: Exception) {

@@ -27,7 +27,7 @@ class ApiPostTask(var callback: (JSONObject?) -> Unit) : AsyncTask<ApiParams, Un
             val okHttpClient = OkHttpClient.Builder().build()
             val call = okHttpClient.newCall(request)
             val response = call.execute()
-            val responseBody = response.body()!!.string()
+            val responseBody = response.body().string()
 
             Log.d("TEST", responseBody)
             return JSONObject(responseBody)

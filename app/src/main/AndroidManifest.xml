@@ -3,6 +3,7 @@
           package="com.example.helth_application">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -10,20 +11,20 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".test">
+        <activity android:name=".Google_Fit">
+        </activity>
+        <activity android:name=".Frame6">
         </activity>
         <activity android:name=".Frame3">
         </activity>
         <activity android:name=".Frame2nd">
-        </activity>
-        <!--<activity-->
-                <!--android:name=".ui.login.Frame3"-->
-                <!--android:label="@string/title_activity_frame3">-->
-        <!--</activity>-->
+        </activity> <!-- <activity -->
+        <!-- android:name=".ui.login.Frame3" -->
+        <!-- android:label="@string/title_activity_frame3"> -->
+        <!-- </activity> -->
         <activity android:name=".Frame2">
-        </activity>
-        <!--<activity android:name=".Frame4">-->
-        <!--</activity>-->
+        </activity> <!-- <activity android:name=".Frame4"> -->
+        <!-- </activity> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

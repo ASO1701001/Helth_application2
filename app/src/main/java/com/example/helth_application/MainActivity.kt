@@ -34,4 +34,6 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this,Frame3::class.java)
         startActivity(intent)
     }
+
+
 }

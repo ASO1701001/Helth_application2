@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="sleep" android:id="@+id/sleep"/>
+    <item android:title="action" android:id="@+id/action"/>
+    <item android:title="food" android:id="@+id/food"/>
+    <item android:title="nutrition" android:id="@+id/nutrion"/>
+    <item android:title="settings" android:id="@+id/settings"/>
+</menu>

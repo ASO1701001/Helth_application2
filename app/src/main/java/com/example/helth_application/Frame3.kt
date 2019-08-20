@@ -17,6 +17,7 @@ class Frame3 : AppCompatActivity() {
         //Loginボタンのメソッドを実行
         Login_button.setOnClickListener { view ->
             signIn(view)
+            onLoginButtonTapped()
         }
     }
 
@@ -24,7 +25,7 @@ class Frame3 : AppCompatActivity() {
     //ページ遷移
     //パーソナルデータページへ
     fun onLoginButtonTapped() {
-        val intent = Intent(this, test::class.java)
+        val intent = Intent(this, Frame6::class.java)
         startActivity(intent)
     }
 

@@ -3,7 +3,6 @@ package com.example.helth_application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -27,13 +26,14 @@ class Frame2nd : AppCompatActivity() {
 
         Make_acount.setOnClickListener { view ->
             signUp(view)
+            onMakeButtonTapped()
         }
     }
 
     //ページ遷移
     //パーソナルデータページへ
     fun onMakeButtonTapped() {
-        val intent = Intent(this, test::class.java)
+        val intent = Intent(this, Frame6::class.java)
 
         startActivity(intent)
     }
@@ -105,7 +105,7 @@ class Frame2nd : AppCompatActivity() {
     }
 
     fun validationSex(): Boolean {
-//        val array = arrayOf("男", "女")
+//      val array = arrayOf("男", "女")
         val radioGroup: RadioGroup = findViewById(R.id.select_sex)
         val id = radioGroup.checkedRadioButtonId
         val radioButton = radioGroup.findViewById<RadioButton>(id)

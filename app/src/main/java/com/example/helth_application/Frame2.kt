@@ -42,11 +42,6 @@ class Frame2 : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        /*
-        Next_page.setOnClickListener {
-                view ->signUp(view)
-        }
-        */
     }
 
     override fun onBackPressed() {

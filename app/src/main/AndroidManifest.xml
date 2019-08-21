@@ -13,7 +13,7 @@
             android:theme="@style/AppTheme">
         <activity android:name=".Frame6">
         </activity>
-        <activity android:name=".Frame6graph">
+        <activity android:name=".LineData">
         </activity>
         <activity android:name=".Frame3">
         </activity>

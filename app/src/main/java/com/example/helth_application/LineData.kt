@@ -11,6 +11,9 @@ import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.DataType
 import com.google.android.gms.fitness.data.Field
 import com.google.android.gms.fitness.request.DataReadRequest
+import kotlinx.android.synthetic.main.activity_frame2_2.*
+import kotlinx.android.synthetic.main.activity_frame6.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -21,6 +24,12 @@ class LineData : AppCompatActivity(){
     override  fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frame6)
+
+        display_point.text = ("今日の歩数：" /*+ values*/ +  "消費カロリー："/* + calor*/)
+        //画面遷移：レシピ提供画面へ
+        //to_offer_recepi.setOnClickListener{
+        //  onOfferRecepiButtonTapped()
+        //}
 
         val fitnessOptions = FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_DELTA,FitnessOptions.ACCESS_READ)
@@ -47,7 +56,7 @@ class LineData : AppCompatActivity(){
         }
     }
 
-    private fun accessGoogleFit(){
+    fun accessGoogleFit(){
         val cal = Calendar.getInstance()
         cal.time = Date()
         val end = cal.timeInMillis
@@ -61,18 +70,29 @@ class LineData : AppCompatActivity(){
             .build()
 
         Fitness.getHistoryClient(this,GoogleSignIn.getLastSignedInAccount(this)!!)
-            .readData(readRequest)
-            .addOnSuccessListener {
+            .readData(readRequest).addOnSuccessListener {
                 val buckets = it.buckets // 集計データはbucketsというところに入ってくる
                 buckets.forEach { bucket ->
                     val start = bucket.getStartTime(TimeUnit.MILLISECONDS)
                     val end = bucket.getEndTime(TimeUnit.MILLISECONDS)
                     val dataSet = bucket.getDataSet(DataType.AGGREGATE_STEP_COUNT_DELTA)
-                    val value = dataSet!!.dataPoints.first().getValue(Field.FIELD_STEPS)
+                    val value = dataSet!!.dataPoints.first().getValue(Field.FIELD_STEPS)//歩数
                     Log.d("Aggregate", "$start $end $value")
+
+
                 }
             }
             .addOnFailureListener{e -> Log.e(LOG_TAG,"onFailure()",e)}
             .addOnCompleteListener { Log.d(LOG_TAG,"onComplete()") }
     }
+
+    //消費カロリー　＝　3　*　体重（ｋｇ）　*　歩数　/　６７（歩）　*　１．０５
+     //val calor = 3 * 1.05 * value / 67 * weight(DBからパーソナルデータの体重)
+
+    /*fun onOfferRecepiButtonTapped() {//レシピ提供画面に遷移する
+        val intent = Intent(this, Frame7::class.java)//遷移先：レシピ提供画面
+        intent.putExtra("calor", calor)
+        startActivity(intent)
+    }*/
 }
+

@@ -37,7 +37,7 @@ public class Frame6 extends AppCompatActivity {
 
         YAxis leftAxis = mChart.getAxisLeft();
         // Y軸最大最小設定
-        leftAxis.setAxisMaximum(150f);
+        leftAxis.setAxisMaximum(99999f);
         leftAxis.setAxisMinimum(0f);
         // Grid横軸を破線
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
@@ -58,10 +58,8 @@ public class Frame6 extends AppCompatActivity {
 
     private void setData() {
         // Entry()を使ってLineDataSetに設定できる形に変更してarrayを新しく作成
-        int data[] = {116, 111, 112, 121, 102, 83,
-                99, 101, 74, 105, 120, 112,
-                109, 102, 107, 93, 82, 99, 110,
-        };
+        //歩数データを入力
+        int data[] = {11111,22222,33333,444444,55555,66666,77777,88888,99999};
 
         ArrayList<Entry> values = new ArrayList<>();
 
@@ -80,7 +78,7 @@ public class Frame6 extends AppCompatActivity {
             mChart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
-            set1 = new LineDataSet(values, "DataSet");
+            set1 = new LineDataSet(values, "歩数");
 
             set1.setDrawIcons(false);
             set1.setColor(Color.BLACK);
@@ -88,7 +86,7 @@ public class Frame6 extends AppCompatActivity {
             set1.setLineWidth(1f);
             set1.setCircleRadius(3f);
             set1.setDrawCircleHole(false);
-            set1.setValueTextSize(0f);
+            set1.setValueTextSize(10f);
             set1.setDrawFilled(true);
             set1.setFormLineWidth(1f);
             set1.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));

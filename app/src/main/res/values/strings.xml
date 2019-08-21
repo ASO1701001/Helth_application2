@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Helth_application</string>
     <string name="Registration">新規アカウント作成</string>
     <string name="Login">ログイン</string>
     <string name="Reg_title">新規アカウント作成</string>
@@ -35,4 +34,6 @@
     <string name="Next_page">次へ</string>
     <string name="Login_ID">ユーザーID</string>
     <string name="Login_password">パスワード</string>
+    <string name="wolk_count">歩数計</string>
+    <string name="app_name" translatable="false">おしえてレシピ</string>
 </resources>

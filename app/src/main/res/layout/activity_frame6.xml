@@ -6,16 +6,24 @@
               android:layout_height="match_parent">
 
     <TextView
-            android:text="@string/app_name"
+            android:text="@string/wolk_count"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/line_chart"
+            android:layout_width="379dp"
+            android:layout_height="361dp"/>
+    <TextView
+            android:layout_width="380dp"
+            android:layout_height="52dp" android:id="@+id/display_point"
+            android:text="@string/action_sign_in_short"/>
+    <Button
+            android:text="レシピを探す"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" android:id="@+id/to_offer_recepi"/>
 
 </LinearLayout>

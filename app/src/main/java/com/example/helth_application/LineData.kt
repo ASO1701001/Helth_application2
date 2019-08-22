@@ -14,18 +14,20 @@ import com.google.android.gms.fitness.request.DataReadRequest
 import kotlinx.android.synthetic.main.activity_frame2_2.*
 import kotlinx.android.synthetic.main.activity_frame6.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Integer.parseInt
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class LineData : AppCompatActivity(){
+abstract class LineData : AppCompatActivity(){
     private val GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 1000
     private val LOG_TAG = "TEST"
+    private  var value = 0
 
     override  fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frame6)
 
-        display_point.text = ("今日の歩数：" /*+ values*/ +  "消費カロリー："/* + calor*/)
+        display_point.text = ("今日の歩数：" + value + "歩\n" + "消費カロリー：" + calor + "kcal")
         //画面遷移：レシピ提供画面へ
         //to_offer_recepi.setOnClickListener{
         //  onOfferRecepiButtonTapped()
@@ -76,7 +78,8 @@ class LineData : AppCompatActivity(){
                     val start = bucket.getStartTime(TimeUnit.MILLISECONDS)
                     val end = bucket.getEndTime(TimeUnit.MILLISECONDS)
                     val dataSet = bucket.getDataSet(DataType.AGGREGATE_STEP_COUNT_DELTA)
-                    val value = dataSet!!.dataPoints.first().getValue(Field.FIELD_STEPS)//歩数
+                    val count = dataSet!!.dataPoints.first().getValue(Field.FIELD_STEPS).toString()//歩数
+                    value = parseInt(count)
                     Log.d("Aggregate", "$start $end $value")
 
 
@@ -87,7 +90,7 @@ class LineData : AppCompatActivity(){
     }
 
     //消費カロリー　＝　3　*　体重（ｋｇ）　*　歩数　/　６７（歩）　*　１．０５
-     //val calor = 3 * 1.05 * value / 67 * weight(DBからパーソナルデータの体重)
+     val calor = 3 * 1.05 * value / 67// * weight(DBからパーソナルデータの体重)
 
     /*fun onOfferRecepiButtonTapped() {//レシピ提供画面に遷移する
         val intent = Intent(this, Frame7::class.java)//遷移先：レシピ提供画面

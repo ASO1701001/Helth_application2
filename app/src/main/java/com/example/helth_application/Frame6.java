@@ -37,7 +37,7 @@ public class Frame6 extends AppCompatActivity {
 
         YAxis leftAxis = mChart.getAxisLeft();
         // Y軸最大最小設定
-        leftAxis.setAxisMaximum(99999f);
+        leftAxis.setAxisMaximum(20000f);
         leftAxis.setAxisMinimum(0f);
         // Grid横軸を破線
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
@@ -59,7 +59,7 @@ public class Frame6 extends AppCompatActivity {
     private void setData() {
         // Entry()を使ってLineDataSetに設定できる形に変更してarrayを新しく作成
         //歩数データを入力
-        int data[] = {11111,22222,33333,444444,55555,66666,77777,88888,99999};
+        int data[] = {12321,7431,3340,8706,7512,16209,8843,8426,1569};
 
         ArrayList<Entry> values = new ArrayList<>();
 
